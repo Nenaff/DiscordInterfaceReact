@@ -1,0 +1,91 @@
+@use '/src/variables.scss';
+
+.guilds {
+    width: 100px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    padding: 20px 5px 10px 0px;
+    flex-shrink: 0;
+
+    .guild {
+        width: 100%;
+        min-height: 70px;
+        transition: border-radius 0.2s, background-color 0.2s, height 0.2s;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 12px;
+        position: relative;
+
+        svg {
+            width: 36px;
+            height: 36px;
+        }
+
+        .guildBorder {
+            background-color: white;
+            width: 4px;
+            height: 0%;
+            border-radius: 0 4px 4px 0;
+            transition: inherit;
+            order: -1;
+        }
+
+        .guildIcon {
+            border-radius: 50%;
+            width: 70px;
+            height: 100%;
+            cursor: pointer;
+            background-color: #36393f;
+            transition: inherit;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 18px;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+            user-select: none;
+            &:hover {
+                background-color: variables.$discord;
+                border-radius: 40%;
+
+                + .guildBorder {
+                    height: 50%;
+                }
+
+                ~ .tooltip {
+                    opacity: 1;
+                }
+            }
+
+            &:active {
+                margin-top: 2px;
+            }
+        }
+    }
+}
+
+.separator {
+    border-radius: 5px;
+    height: 2px;
+    width: 50%;
+    background-color: #2e3033;
+}
+
+.guilds .successGuild .guildIcon {
+    &:hover {
+        background-color: variables.$success;
+
+        svg {
+            color: white;
+        }
+    }
+
+    svg {
+        transition: color 0.2s;
+        color: variables.$success;
+    }
+}

@@ -1,0 +1,560 @@
+@use '/src/variables.scss';
+
+:root {
+  background-color: #202225;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  padding: 0;
+  margin: 0;
+}
+
+.contentContainer {
+  height: 100vh;
+  display: flex;
+  justify-content: left;
+  align-content: flex-start;
+}
+
+.content {
+  height: 100%;
+  flex-grow: 1;
+  display: flex;
+  overflow: hidden;
+  background-color: variables.$primary;
+}
+
+.contentLeft {
+  width: 340px;
+  height: 100%;
+  background-color: variables.$secondary;
+  display: flex;
+  flex-direction: column;
+}
+
+.contentRight {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.guildNavigation {
+  flex-grow: 1;
+}
+
+.profile {
+  background-color: variables.$tertiary;
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 10px 0 10px;
+  gap: 10px;
+
+  .name {
+    display: flex;
+    gap: 3px;
+    flex-direction: column;
+
+    h1 {
+      font-size: 19px;
+      font-weight: 600;
+    }
+
+    h2 {
+      color: variables.$header-secondary;
+      font-size: 14px;
+      font-weight: 100;
+    }
+  }
+
+  .tools {
+    display: flex;
+    flex-grow: 1;
+    justify-content: right;
+
+    button {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: transparent;
+      border: none;
+      width: 40px;
+      height: 40px;
+      border-radius: 5px;
+      cursor: pointer;
+
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+
+        svg {
+          color: variables.$iconhover;
+        }
+
+        .tooltip {
+          opacity: 1;
+        }
+      }
+
+      svg {
+        color: variables.$icon;
+        width: 25px;
+        height: 25px;
+      }
+    }
+  }
+
+  .pictureContainer {
+    position: relative;
+
+    .picture {
+      border-radius: 50%;
+      width: 45px;
+      height: 45px;
+    }
+
+    .status {
+      position: absolute;
+      right: -3px;
+      bottom: 0px;
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      border: 3px solid variables.$tertiary;
+      background-color: variables.$danger;
+    }
+  }
+}
+
+.guildHead,
+.chatHead {
+  height: 70px;
+  border-bottom: 2px solid variables.$tertiary;
+  padding: 0 25px 0 25px;
+  display: flex;
+  align-items: center;
+}
+
+.chatHead {
+  background-color: variables.$primary;
+  border-color: variables.$secondary;
+  gap: 10px;
+  flex-shrink: 0;
+
+  .tools {
+    justify-content: end;
+    flex-grow: 1;
+    display: flex;
+    gap: 15px;
+
+    button {
+      background-color: transparent;
+      border: none;
+      position: relative;
+      svg {
+        color: variables.$icon;
+        cursor: pointer;
+        &:hover {
+          color: variables.$iconhover;
+        }
+      }
+      &:hover span {
+        opacity: 1;
+      }
+    }
+
+    .search {
+      background-color: variables.$background;
+      border-radius: 5px;
+      padding: 0 5px 0 5px;
+      display: flex;
+      align-items: center;
+
+      input {
+        background-color: transparent;
+        border: none;
+        outline: none;
+        width: 150px;
+        transition: width 0.2s;
+        font-size: 16px;
+
+        &:focus, &:not(:placeholder-shown) {
+          width: 250px;
+        }
+      }
+
+      svg {
+        width: 20px;
+        height: 20px;
+        color: variables.$muted;
+      }
+    }
+  }
+
+  svg {
+    width: 27px;
+    height: 27px;
+    color: variables.$muted;
+  }
+}
+
+.tooltip {
+  text-align: left;
+  pointer-events: none;
+  background-color: variables.$tooltip;
+  border-radius: 5px;
+  position: absolute;
+  transition: opacity 0.1s;
+  width: max-content;
+  max-width: 140px;
+  opacity: 0;
+  padding: 12px 15px 12px 15px;
+  font-size: 18px;
+}
+
+.tooltip-right {
+  left: 110px;
+  &::before {
+    content: "";
+    position: absolute;
+    left: -5px;
+    top: 38%;
+    border-right: 5px solid variables.$tooltip;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+  }
+}
+
+.tooltip-up {
+  bottom: 55px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  &::before {
+    bottom: -5px;
+    content: "";
+    left: 50%;
+    margin-left: -5px;
+    position: absolute;
+    border-top: 5px solid variables.$tooltip;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+  }
+}
+
+.tooltip-down {
+  top: 45px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  &::before {
+    top: -5px;
+    content: "";
+    left: 50%;
+    margin-left: -5px;
+    position: absolute;
+    border-bottom: 5px solid variables.$tooltip;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+  }
+}
+
+.notification {
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-right: 20px;
+  padding-left: 20px;
+
+  span {
+    font-size: 18px;
+    flex-grow: 1;
+    text-align: center;
+  }
+
+  svg {
+    color: variables.$icon;
+    cursor: pointer;
+
+    &:hover {
+      color: variables.$iconhover;
+    }
+  }
+}
+
+.base {
+  width: 100%;
+  flex-direction: column;
+  display: flex;
+  flex-shrink: 1;
+}
+
+.categoryLabel {
+  font-weight: 600;
+  text-transform: uppercase;
+  color: variables.$icon;
+}
+
+.channels {
+  display: flex;
+  padding: 20px;
+  flex-direction: column;
+
+  .categoryContainer {
+    margin-bottom: 5px;
+    margin-top: 5px;
+
+    .categoryChannels {
+      margin-top: 5px;
+    }
+
+    .category {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      cursor: pointer;
+
+      svg {
+        color: variables.$icon;
+        transition: transform 0.2s;
+      }
+
+      &:hover {
+
+        span,
+        svg {
+          color: variables.$iconhover;
+        }
+      }
+    }
+  }
+
+  .channel {
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+    height: 20px;
+    gap: 5px;
+    cursor: pointer;
+
+    svg {
+      width: 20px;
+      height: 20px;
+      color: variables.$icon;
+    }
+
+    span {
+      font-size: 18px;
+      color: variables.$icon;
+    }
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.03);
+
+      span {
+        color: variables.$iconhover;
+      }
+    }
+
+    &:active {
+      background-color: rgba(255, 255, 255, 0.05);
+    }
+  }
+}
+
+.chatBody {
+  height: 100%;
+  display: flex;
+
+  .chatContainer {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-basis: 100%;
+
+    .messageInputContainer {
+      .messageInput {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        background-color: variables.$messageinput;
+        border-radius: 10px;
+        margin-right: 35px;
+        margin-left: 35px;
+        margin-bottom: 30px;
+        height: 60px;
+        flex-grow: 1;
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      .emojiPickerContainer {
+        width: 35px;
+        height: 35px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .emojiPicker {
+
+          cursor: pointer;
+          filter: grayscale(100%);
+          background-repeat: no-repeat;
+          width: 30px;
+          height: 30px;
+          background-position: 0px 0px;
+          background-image: url("/assets/pictures/emojis.png");
+          transition: transform 0.1s, background-size 0.1s, grayscale 0.1s;
+          background-size: 327px 152px;
+
+          &:hover {
+            filter: grayscale(0);
+            transform: scale(1.2);
+          }
+        }
+      }
+
+      .inputButton {
+        position: relative;
+        display: flex;
+        justify-content: center;
+
+        &:hover .tooltip {
+          opacity: 1;
+        }
+      }
+
+      svg {
+        color: variables.$icon;
+        width: 35px;
+        height: 35px;
+        cursor: pointer;
+
+        &:hover {
+          color: variables.$iconhover;
+        }
+      }
+
+      input {
+        background-color: transparent;
+        border: none;
+        outline: none;
+        height: 90%;
+        font-size: 20px;
+        flex-grow: 1;
+      }
+    }
+
+    .chatScroller {
+      display: flex;
+      align-items: end;
+      flex-direction: row;
+      padding-right: 7px;
+      flex-grow: 1;
+      height: 100px;
+
+      .chatSpaceContainer {
+        gap: 15px;
+        display: flex;
+        flex-direction: column;
+        overflow: auto;
+        overflow-anchor: none;
+        flex-grow: 1;
+        height: 100%;
+
+        .chatSpace {
+          min-height: 10px;
+        }
+
+        .chat {
+          flex-grow: 1;
+          width: 100%;
+          gap: 15px;
+          display: flex;
+          flex-direction: column;
+          justify-content: end;
+
+          .message {
+            display: flex;
+            flex-direction: row;
+            gap: 18px;
+            padding: 5px 35px 5px 35px;
+
+            img {
+              border-radius: 50%;
+              width: 52px;
+              height: 52px;
+            }
+
+            .messageContent {
+              display: flex;
+              gap: 5px;
+              flex-direction: column;
+            }
+
+            .messageHead {
+              display: flex;
+              flex-direction: row;
+              gap: 8px;
+              align-items: baseline;
+
+              h3 {
+                font-weight: normal;
+                font-size: 20px;
+              }
+
+              h5 {
+                color: variables.$muted;
+                font-weight: normal;
+                font-size: 14px;
+              }
+            }
+
+            .messageBody {
+              font-size: 20px;
+              color: variables.$iconhover;
+            }
+
+            &:hover {
+              background-color: rgba(0, 0, 0, 0.05);
+            }
+          }
+        }
+      }
+    }
+  }
+  .membersList {
+    background-color: variables.$secondary;
+    flex-grow: 1;
+    flex-basis: 450px;
+    display: flex;
+    flex-direction: column;
+
+    .categoryLabel {
+      padding: 24px 8px 0 16px;
+    }
+  }
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  border-radius: 50px;
+  background: variables.$scrollbar-auto-track;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  border-radius: 50px;
+  background: variables.$scrollbar-auto-thumb;
+}

@@ -1,0 +1,29 @@
+@use '/src/variables.scss';
+
+@font-face {
+    font-family: "Whitney";
+    font-weight: normal;
+    src: url("./assets/fonts/whitneymedium.otf");
+}
+
+@font-face {
+    font-family: "Whitney";
+    font-weight: 600;
+    src: url("./assets/fonts/whitneysemibold.otf");
+}
+
+@font-face {
+    font-family: "Whitney";
+    font-weight: bold;
+    src: url("./assets/fonts/whitneybold.otf");
+}
+
+body, button, input {
+    color: white;
+    font-family: 'Whitney' !important;
+}
+
+body {
+    margin: 0;
+    height: 100vh;
+}
